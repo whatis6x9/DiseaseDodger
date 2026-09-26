@@ -41,7 +41,7 @@ navigation_mesh = SubResource("NavigationMesh_32aui")
 size = Vector3(12.473633, 0.123291016, 11.0251465)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1111090931]
-transform = Transform3D(1, 0, 0, 0, 0.9267845, 0.37559348, 0, -0.37559348, 0.9267845, 0, 5.4820185, 12.842445)
+transform = Transform3D(1, 0, 0, 0, 0.9267845, 0.37559348, 0, -0.37559348, 0.9267845, -0.06447315, 8.912606, 13.2782755)
 
 [node name="BubbleBoy" parent="." unique_id=1935134588 instance=ExtResource("3_2t7xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8459258, 0.8286402, 3.8359106)
@@ -58,9 +58,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8923063, 0)
 script = ExtResource("5_f6pk4")
 enemies = Array[PackedScene]([ExtResource("3_4ov7l")])
 enemiesPerWave = 1
+maxWaves = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy Spawner" unique_id=828868260]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44782925, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.114783764, 0)
 shape = SubResource("BoxShape3D_f6pk4")
 
 [node name="Timer" type="Timer" parent="Enemy Spawner" unique_id=955789196]
