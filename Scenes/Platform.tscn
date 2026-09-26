@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://jebul18m1tyq"]
+
+[ext_resource type="Script" uid="uid://bpohv67xov658" path="res://Scripts/character_body_3d.gd" id="1_hr86y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fn5od"]
+size = Vector3(12, 0.1, 11)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hr86y"]
+size = Vector3(12.045898, 5.2373047, 0.01977539)
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=416645265]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource("1_hr86y")
+
+[node name="Floor" type="CollisionShape3D" parent="." unique_id=1637866027]
+shape = SubResource("BoxShape3D_fn5od")
+
+[node name="FloorCollider" type="CSGBox3D" parent="Floor" unique_id=927682429]
+size = Vector3(12, 0.1, 11)
+
+[node name="Wall1" type="CollisionShape3D" parent="." unique_id=376616031]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22558594, 5.5)
+shape = SubResource("BoxShape3D_hr86y")
+
+[node name="Wall2" type="CollisionShape3D" parent="." unique_id=1595168178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22558594, -5.4687853)
+shape = SubResource("BoxShape3D_hr86y")
+
+[node name="Wall3" type="CollisionShape3D" parent="." unique_id=1917541674]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.919, 2.6895797, 0)
+shape = SubResource("BoxShape3D_hr86y")
+
+[node name="Wall4" type="CollisionShape3D" parent="." unique_id=327581352]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.987, 0.34534144, 0)
+shape = SubResource("BoxShape3D_hr86y")

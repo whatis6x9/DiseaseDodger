@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bddos4l7jk6kx"]
+
+[ext_resource type="Script" uid="uid://w64x5ohyx5tx" path="res://Scripts/map_1.gd" id="1_vjepk"]
+[ext_resource type="PackedScene" uid="uid://jebul18m1tyq" path="res://Scenes/Platform.tscn" id="2_vjepk"]
+[ext_resource type="PackedScene" uid="uid://bgsubeog1wmdf" path="res://Scenes/BubbleBoy.tscn" id="3_2t7xj"]
+[ext_resource type="PackedScene" uid="uid://c12wqgr78fa1b" path="res://Scenes/enemy.tscn" id="3_4ov7l"]
+[ext_resource type="Script" uid="uid://bm37phjqjfkwb" path="res://Scripts/enemy_spawner.gd" id="5_f6pk4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f6pk4"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_es4yc"]
+sky_material = SubResource("ProceduralSkyMaterial_f6pk4")
+
+[sub_resource type="Environment" id="Environment_hrdr6"]
+background_mode = 2
+sky = SubResource("Sky_es4yc")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_32aui"]
+vertices = PackedVector3Array(-5.7368164, 0.4383545, -5.0125732, -5.7368164, 0.4383545, 4.9874268, 5.7631836, 0.4383545, 4.9874268, 5.7631836, 0.4383545, -5.0125732)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f6pk4"]
+size = Vector3(3.7736816, 0.022460938, 4.888672)
+
+[node name="World" type="Node3D" unique_id=1056795468]
+script = ExtResource("1_vjepk")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1910466025]
+environment = SubResource("Environment_hrdr6")
+
+[node name="Platform" parent="." unique_id=416645265 instance=ExtResource("2_vjepk")]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Platform" unique_id=1691234928]
+navigation_mesh = SubResource("NavigationMesh_32aui")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Platform/NavigationRegion3D" unique_id=1807267625]
+size = Vector3(12.473633, 0.123291016, 11.0251465)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1111090931]
+transform = Transform3D(1, 0, 0, 0, 0.9267845, 0.37559348, 0, -0.37559348, 0.9267845, 0, 5.4820185, 12.842445)
+
+[node name="BubbleBoy" parent="." unique_id=1935134588 instance=ExtResource("3_2t7xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8459258, 0.8286402, 3.8359106)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1577556181]
+transform = Transform3D(0.5833286, 0.52562714, -0.6192284, 0, 0.76237476, 0.6471358, 0.81223625, -0.37749282, 0.444715, -2.2845683, 1.5311909, 3.5557919)
+
+[node name="Enemy" parent="." unique_id=2036500499 instance=ExtResource("3_4ov7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9982607, 0.049999714, -1.4162288)
+SPEED = 3.0
+
+[node name="Enemy Spawner" type="Node3D" parent="." unique_id=128096228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8923063, 0)
+script = ExtResource("5_f6pk4")
+enemies = Array[PackedScene]([ExtResource("3_4ov7l")])
+enemiesPerWave = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy Spawner" unique_id=828868260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44782925, 0)
+shape = SubResource("BoxShape3D_f6pk4")
+
+[node name="Timer" type="Timer" parent="Enemy Spawner" unique_id=955789196]
+
+[connection signal="timeout" from="Enemy Spawner/Timer" to="Enemy Spawner" method="_on_timer_timeout"]
