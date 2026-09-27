@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://bgsubeog1wmdf" path="res://Scenes/BubbleBoy.tscn" id="3_2t7xj"]
 [ext_resource type="PackedScene" uid="uid://c12wqgr78fa1b" path="res://Scenes/enemy.tscn" id="3_4ov7l"]
 [ext_resource type="Script" uid="uid://bm37phjqjfkwb" path="res://Scripts/enemy_spawner.gd" id="5_f6pk4"]
+[ext_resource type="PackedScene" uid="uid://bod5b0x33r64j" path="res://Scenes/tree_2.tscn" id="5_uifhc"]
+[ext_resource type="Script" uid="uid://0vjq7jggll6n" path="res://Scripts/tree_spawner.gd" id="6_es4yc"]
+[ext_resource type="PackedScene" uid="uid://c0dsk0v1iwfuf" path="res://Scenes/tree_1.tscn" id="7_hrdr6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f6pk4"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -23,6 +26,9 @@ glow_enabled = true
 vertices = PackedVector3Array(-5.7368164, 0.4383545, -5.0125732, -5.7368164, 0.4383545, 4.9874268, 5.7631836, 0.4383545, 4.9874268, 5.7631836, 0.4383545, -5.0125732)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_hrdr6"]
+size = Vector3(1.2069092, 0.0126953125, 1.1018066)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_f6pk4"]
 size = Vector3(3.7736816, 0.022460938, 4.888672)
 
@@ -37,11 +43,22 @@ environment = SubResource("Environment_hrdr6")
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Platform" unique_id=1691234928]
 navigation_mesh = SubResource("NavigationMesh_32aui")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Platform/NavigationRegion3D" unique_id=1807267625]
-size = Vector3(12.473633, 0.123291016, 11.0251465)
+[node name="Tree Spawner" type="Node3D" parent="Platform" unique_id=934682793]
+script = ExtResource("6_es4yc")
+obstacles = Array[PackedScene]([ExtResource("7_hrdr6"), ExtResource("5_uifhc")])
+nextWaveTime = 0.1
+obstaclesPerWave = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/Tree Spawner" unique_id=1526100210]
+transform = Transform3D(9.725, 0, 0, 0, 9.725, 0, 0, 0, 9.725, -0.09081575, 0.21100104, -0.041549683)
+shape = SubResource("BoxShape3D_hrdr6")
+
+[node name="Timer" type="Timer" parent="Platform/Tree Spawner" unique_id=568989334]
+wait_time = 0.001
+one_shot = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1111090931]
-transform = Transform3D(1, 0, 0, 0, 0.9267845, 0.37559348, 0, -0.37559348, 0.9267845, -0.06447315, 8.912606, 13.2782755)
+transform = Transform3D(1, 0, 0, 0, 0.9267845, 0.37559348, 0, -0.37559348, 0.9267845, -0.06447315, 7.314863, 12.161223)
 
 [node name="BubbleBoy" parent="." unique_id=1935134588 instance=ExtResource("3_2t7xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8459258, 0.8286402, 3.8359106)
@@ -66,4 +83,5 @@ shape = SubResource("BoxShape3D_f6pk4")
 
 [node name="Timer" type="Timer" parent="Enemy Spawner" unique_id=955789196]
 
+[connection signal="timeout" from="Platform/Tree Spawner/Timer" to="Platform/Tree Spawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="Enemy Spawner/Timer" to="Enemy Spawner" method="_on_timer_timeout"]
