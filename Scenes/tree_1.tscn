@@ -51,7 +51,7 @@ size = Vector3(1, 16.009209, 1)
 [node name="Tree1" type="Node3D" unique_id=1930191463]
 
 [node name="big_tree_02" type="MeshInstance3D" parent="." unique_id=543640407]
-transform = Transform3D(12.91, 0, 0, 0, -5.64314e-07, 12.91, 0, -12.91, -5.64314e-07, 0, 0, 0)
+transform = Transform3D(12.91, 0, 0, 0, -5.64314e-07, 12.91, 0, -12.91, -5.64314e-07, 0, 0.22305405, 0)
 mesh = SubResource("ArrayMesh_oa0xn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=725129989]

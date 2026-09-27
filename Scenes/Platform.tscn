@@ -13,7 +13,7 @@ uv1_scale = Vector3(0.325, 0.325, 0.325)
 uv1_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hr86y"]
-size = Vector3(12.045898, 5.2373047, 0.01977539)
+size = Vector3(12.045898, 5.2373047, 0.40931702)
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=416645265]
 axis_lock_linear_x = true
@@ -41,7 +41,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.9
 shape = SubResource("BoxShape3D_hr86y")
 
 [node name="Wall4" type="CollisionShape3D" parent="." unique_id=327581352]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.987, 0.34534144, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.21415, 0.34534144, 9.929041e-09)
 shape = SubResource("BoxShape3D_hr86y")
 
 [node name="bush_01" parent="." unique_id=1126236436 instance=ExtResource("3_kti7u")]

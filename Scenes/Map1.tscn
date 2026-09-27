@@ -78,7 +78,7 @@ enemiesPerWave = 1
 maxWaves = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy Spawner" unique_id=828868260]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.114783764, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3468547, 0)
 shape = SubResource("BoxShape3D_f6pk4")
 
 [node name="Timer" type="Timer" parent="Enemy Spawner" unique_id=955789196]

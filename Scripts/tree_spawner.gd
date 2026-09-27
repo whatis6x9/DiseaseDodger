@@ -4,7 +4,7 @@ extends Node3D
 @export var nextWaveTime: float = 2.5
 @export var obstaclesPerWave: int = 2
 @export var maxWaves := -1
-
+@export var distance_multiplier : float = 8
 @onready var timer: Timer = $Timer
 
 var currentWave = 0
@@ -18,8 +18,8 @@ func _on_timer_timeout() -> void:
 	for i in obstaclesPerWave:
 		var randomObstacle = obstacles.pick_random().instantiate()
 		$".".add_child.call_deferred(randomObstacle)
-		print(_get_random_point())
-		randomObstacle.position = _get_random_point()*Vector3(5,0,5)
+		randomObstacle.position = _get_random_point()*Vector3(distance_multiplier,0,distance_multiplier)
+		randomObstacle.rotate(Vector3(0,1,0).normalized(),90)
 	
 	currentWave += 1
 
