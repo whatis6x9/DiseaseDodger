@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://b8bonerm6tefs"]
+
+[ext_resource type="Script" uid="uid://be8jeegclni8y" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="FontFile" uid="uid://bu1app3xms1jr" path="res://static/Fredoka_Expanded-Bold.ttf" id="2_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://v4xaps0ncash" path="res://Bubbleboy.png" id="2_fu7sn"]
+
+[sub_resource type="Gradient" id="Gradient_fu7sn"]
+offsets = PackedFloat32Array(0, 0.9, 1)
+colors = PackedColorArray(0.7490196, 0.9137255, 1, 0.14901961, 1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fu7sn"]
+gradient = SubResource("Gradient_fu7sn")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="MainMenu" type="Control" unique_id=613486151]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 3.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7vrkn")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1259634813]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_fu7sn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1188659212]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 30.0
+offset_top = -124.0
+offset_right = 692.0
+offset_bottom = 166.0
+grow_vertical = 2
+
+[node name="Bubble boy" type="Label" parent="VBoxContainer" unique_id=1347971218]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9098039, 0.9843137, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.020446979, 0.120724835, 0.33048913, 1)
+theme_override_colors/font_outline_color = Color(0.105882354, 0.42352942, 0.65882355, 1)
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_font_sizes/font_size = 96
+text = "Bubble boy"
+horizontal_alignment = 1
+
+[node name="spacer" type="Container" parent="VBoxContainer" unique_id=2103155798]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Start" type="Button" parent="VBoxContainer" unique_id=905596968]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start"
+
+[node name="Options" type="Button" parent="VBoxContainer" unique_id=673083843]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Options"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=28177012]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit"
+
+[node name="BubbleIntro" type="CPUParticles2D" parent="." unique_id=585800366]
+position = Vector2(576, -60)
+amount = 200
+texture = SubResource("GradientTexture2D_fu7sn")
+lifetime = 3.0
+explosiveness = 0.7
+emission_shape = 3
+emission_rect_extents = Vector2(600, 10)
+direction = Vector2(0, 1)
+spread = 8.0
+initial_velocity_min = 250.0
+initial_velocity_max = 600.0
+scale_amount_min = 0.2
+scale_amount_max = 0.8
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

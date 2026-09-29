@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://jebul18m1tyq"]
+
+[ext_resource type="Script" uid="uid://bpohv67xov658" path="res://Scripts/character_body_3d.gd" id="1_hr86y"]
+[ext_resource type="Texture2D" uid="uid://cw348nnv6o3en" path="res://Assets/Textures/ground.png" id="2_8n7cf"]
+[ext_resource type="PackedScene" uid="uid://f51m8uu5r8mi" path="res://Assets/Models/bush_01.fbx" id="3_kti7u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fn5od"]
+size = Vector3(12, 0.1, 11)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kti7u"]
+albedo_texture = ExtResource("2_8n7cf")
+uv1_scale = Vector3(0.325, 0.325, 0.325)
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hr86y"]
+size = Vector3(12.045898, 5.2373047, 0.40931702)
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=416645265]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource("1_hr86y")
+
+[node name="Floor" type="CollisionShape3D" parent="." unique_id=1637866027]
+shape = SubResource("BoxShape3D_fn5od")
+
+[node name="FloorCollider" type="CSGBox3D" parent="Floor" unique_id=927682429]
+size = Vector3(12, 0.1, 11)
+material = SubResource("StandardMaterial3D_kti7u")
+
+[node name="Wall1" type="CollisionShape3D" parent="." unique_id=376616031]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22558594, 5.5)
+shape = SubResource("BoxShape3D_hr86y")
+
+[node name="Wall2" type="CollisionShape3D" parent="." unique_id=1595168178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22558594, -5.4687853)
+shape = SubResource("BoxShape3D_hr86y")
+
+[node name="Wall3" type="CollisionShape3D" parent="." unique_id=1917541674]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.919, 0.2371521, 0)
+shape = SubResource("BoxShape3D_hr86y")
+
+[node name="Wall4" type="CollisionShape3D" parent="." unique_id=327581352]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.21415, 0.34534144, 9.929041e-09)
+shape = SubResource("BoxShape3D_hr86y")
+
+[node name="bush_01" parent="." unique_id=1126236436 instance=ExtResource("3_kti7u")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -3.188231, -2.193451e-05, 2.172646)
+
+[node name="bush_02" parent="." unique_id=762357726 instance=ExtResource("3_kti7u")]
+transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, 3.186851, 0.03938085, -2.9353817)

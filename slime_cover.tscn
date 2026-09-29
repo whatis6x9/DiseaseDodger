@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c8iuoqc6xqps4"]
+
+[ext_resource type="Script" uid="uid://jaavrweil2qu" path="res://slime_cover.gd" id="1_dmf0r"]
+[ext_resource type="Shader" uid="uid://c56pfdp8wqlnv" path="res://slime.gdshader" id="2_bl8aq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u7xkf"]
+shader = ExtResource("2_bl8aq")
+shader_parameter/base_color = Color(0.24, 0.65, 0.12, 0.92)
+shader_parameter/shine_color = Color(1, 1, 1, 0.6)
+shader_parameter/shine_pos = 0.3
+shader_parameter/shine_width = 0.12
+
+[node name="SlimeCover" type="Node2D" unique_id=1489346863]
+script = ExtResource("1_dmf0r")
+
+[node name="Blob" type="Polygon2D" parent="." unique_id=1469199299]
+material = SubResource("ShaderMaterial_u7xkf")
+color = Color(0.24705882, 0.6509804, 0.11764706, 1)
