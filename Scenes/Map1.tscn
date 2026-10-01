@@ -61,7 +61,7 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 0.9267845, 0.37559348, 0, -0.37559348, 0.9267845, -0.06447315, 7.314863, 12.161223)
 
 [node name="BubbleBoy" parent="." unique_id=1935134588 instance=ExtResource("3_2t7xj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8459258, 0.8286402, 3.8359106)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8459258, 1.6740263, 3.8359106)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1577556181]
 transform = Transform3D(0.5833286, 0.52562714, -0.6192284, 0, 0.76237476, 0.6471358, 0.81223625, -0.37749282, 0.444715, -2.2845683, 1.5311909, 3.5557919)
