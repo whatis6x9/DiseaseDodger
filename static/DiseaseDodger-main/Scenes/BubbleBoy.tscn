@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bgsubeog1wmdf"]
+
+[ext_resource type="Script" uid="uid://f4lh2imulxy4" path="res://Scripts/BubbleBoy.gd" id="1_kwxc0"]
+[ext_resource type="Texture2D" uid="uid://dpq7n1fdfs1qy" path="res://icon.svg" id="2_wpm7o"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vjepk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kwxc0"]
+radius = 0.591987
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwxc0"]
+albedo_color = Color(0.7058824, 1, 1, 1)
+
+[node name="BubbleBoy" type="RigidBody3D" unique_id=1935134588]
+mass = 1000.0
+script = ExtResource("1_kwxc0")
+Tex2 = ExtResource("2_wpm7o")
+
+[node name="BubbleCollider" type="CollisionShape3D" parent="." unique_id=313043950]
+shape = SubResource("SphereShape3D_vjepk")
+
+[node name="HurtArea" type="Area3D" parent="." unique_id=1380777425]
+
+[node name="HurtCollider" type="CollisionShape3D" parent="HurtArea" unique_id=1578553235]
+shape = SubResource("SphereShape3D_kwxc0")
+debug_color = Color(0.9884394, 0, 0.3071676, 0.41960785)
+
+[node name="Visuals" type="Node3D" parent="." unique_id=16402187]
+
+[node name="SimpleMesh" type="CSGSphere3D" parent="Visuals" unique_id=1453635169]
+material = SubResource("StandardMaterial3D_kwxc0")
+
+[connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]
