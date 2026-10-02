@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cwots7o6117jq"]
+
+[ext_resource type="Texture2D" uid="uid://v4xaps0ncash" path="res://Bubbleboy.png" id="1_prnvy"]
+[ext_resource type="FontFile" uid="uid://bu1app3xms1jr" path="res://static/Fredoka_Expanded-Bold.ttf" id="2_4tmxy"]
+[ext_resource type="PackedScene" uid="uid://d1l8wrxwjn2yi" path="res://Scenes/volume_control.tscn" id="3_qyyw6"]
+
+[node name="Options" type="Control" unique_id=715563123]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="TextureRect" parent="." unique_id=828037001]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_prnvy")
+
+[node name="Bubble boy" type="Label" parent="." unique_id=49460919]
+layout_mode = 0
+offset_left = 30.0
+offset_right = 498.0
+offset_bottom = 117.0
+theme_override_colors/font_color = Color(0.9098039, 0.9843137, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.020446979, 0.120724835, 0.33048913, 1)
+theme_override_colors/font_outline_color = Color(0.105882354, 0.42352942, 0.65882355, 1)
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_4tmxy")
+theme_override_font_sizes/font_size = 96
+text = "Options"
+horizontal_alignment = 1
+
+[node name="volume_controls" type="VBoxContainer" parent="." unique_id=1042100545]
+layout_mode = 0
+offset_left = 397.5
+offset_top = 200.0
+offset_right = 897.5
+offset_bottom = 500.0
+
+[node name="master_control" parent="volume_controls" unique_id=61420675 instance=ExtResource("3_qyyw6")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="music_control" parent="volume_controls" unique_id=1328112040 instance=ExtResource("3_qyyw6")]
+layout_mode = 2
+bus_name = "music"
+
+[node name="sfx_control" parent="volume_controls" unique_id=892903003 instance=ExtResource("3_qyyw6")]
+layout_mode = 2
+bus_name = "sfx"
