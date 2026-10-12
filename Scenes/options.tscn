@@ -1,8 +1,21 @@
 [gd_scene format=3 uid="uid://cwots7o6117jq"]
 
 [ext_resource type="Texture2D" uid="uid://v4xaps0ncash" path="res://Bubbleboy.png" id="1_prnvy"]
+[ext_resource type="Script" uid="uid://c73nit677urta" path="res://Scenes/options.gd" id="1_ww8vx"]
 [ext_resource type="FontFile" uid="uid://bu1app3xms1jr" path="res://static/Fredoka_Expanded-Bold.ttf" id="2_4tmxy"]
 [ext_resource type="PackedScene" uid="uid://d1l8wrxwjn2yi" path="res://Scenes/volume_control.tscn" id="3_qyyw6"]
+
+[sub_resource type="Gradient" id="Gradient_fu7sn"]
+offsets = PackedFloat32Array(0, 0.9, 1)
+colors = PackedColorArray(0.7490196, 0.9137255, 1, 0.14901961, 1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qyyw6"]
+gradient = SubResource("Gradient_fu7sn")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="Options" type="Control" unique_id=715563123]
 layout_mode = 3
@@ -11,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ww8vx")
 
 [node name="background" type="TextureRect" parent="." unique_id=828037001]
 layout_mode = 0
@@ -18,11 +32,15 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_prnvy")
 
-[node name="Bubble boy" type="Label" parent="." unique_id=49460919]
+[node name="options_box" type="VBoxContainer" parent="." unique_id=1042100545]
 layout_mode = 0
-offset_left = 30.0
-offset_right = 498.0
-offset_bottom = 117.0
+offset_left = 327.0
+offset_top = 50.0
+offset_right = 827.0
+offset_bottom = 447.0
+
+[node name="options_title" type="Label" parent="options_box" unique_id=49460919]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.9098039, 0.9843137, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.020446979, 0.120724835, 0.33048913, 1)
 theme_override_colors/font_outline_color = Color(0.105882354, 0.42352942, 0.65882355, 1)
@@ -33,21 +51,66 @@ theme_override_font_sizes/font_size = 96
 text = "Options"
 horizontal_alignment = 1
 
-[node name="volume_controls" type="VBoxContainer" parent="." unique_id=1042100545]
-layout_mode = 0
-offset_left = 397.5
-offset_top = 200.0
-offset_right = 897.5
-offset_bottom = 500.0
+[node name="title_spacer" type="Container" parent="options_box" unique_id=919015325]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
 
-[node name="master_control" parent="volume_controls" unique_id=61420675 instance=ExtResource("3_qyyw6")]
+[node name="master_label" type="Label" parent="options_box" unique_id=593613222]
+layout_mode = 2
+text = "Master"
+
+[node name="master_control" parent="options_box" unique_id=61420675 instance=ExtResource("3_qyyw6")]
 layout_mode = 2
 bus_name = "Master"
 
-[node name="music_control" parent="volume_controls" unique_id=1328112040 instance=ExtResource("3_qyyw6")]
+[node name="spacer1" type="Container" parent="options_box" unique_id=1632738079]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="music_label" type="Label" parent="options_box" unique_id=137582757]
+layout_mode = 2
+text = "Music"
+
+[node name="music_control" parent="options_box" unique_id=1328112040 instance=ExtResource("3_qyyw6")]
 layout_mode = 2
 bus_name = "music"
 
-[node name="sfx_control" parent="volume_controls" unique_id=892903003 instance=ExtResource("3_qyyw6")]
+[node name="spacer2" type="Container" parent="options_box" unique_id=982093444]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="sfx_label" type="Label" parent="options_box" unique_id=173804361]
+layout_mode = 2
+text = "Sound Effects"
+
+[node name="sfx_control" parent="options_box" unique_id=892903003 instance=ExtResource("3_qyyw6")]
 layout_mode = 2
 bus_name = "sfx"
+
+[node name="spacer3" type="Container" parent="options_box" unique_id=551370889]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="back" type="Button" parent="options_box" unique_id=737460429]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back
+"
+
+[node name="BubbleIntro" type="CPUParticles2D" parent="." unique_id=129012082]
+position = Vector2(576, -60)
+amount = 200
+texture = SubResource("GradientTexture2D_qyyw6")
+lifetime = 3.0
+explosiveness = 0.7
+emission_shape = 3
+emission_rect_extents = Vector2(600, 10)
+direction = Vector2(0, 1)
+spread = 8.0
+initial_velocity_min = 250.0
+initial_velocity_max = 600.0
+scale_amount_min = 0.2
+scale_amount_max = 0.8
+
+[connection signal="pressed" from="options_box/back" to="." method="_on_back_pressed"]

@@ -111,6 +111,7 @@ func _on_quit_pressed() -> void:
 
 func _on_options_pressed() -> void:
 	_spawn_slime($VBoxContainer/Options)
+	get_tree().change_scene_to_file("res://Scenes/options.tscn")
 	print("Options pressed")
 
 

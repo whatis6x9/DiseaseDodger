@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://n77uf6sbupvd"]
 
-[ext_resource type="Script" uid="uid://dsjbl8kvqvucc" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Script" uid="uid://be8jeegclni8y" path="res://main_menu.gd" id="1_7vrkn"]
 [ext_resource type="FontFile" uid="uid://bu1app3xms1jr" path="res://static/Fredoka_Expanded-Bold.ttf" id="2_7vrkn"]
-[ext_resource type="Texture2D" uid="uid://526ew84in51v" path="res://Bubbleboy.png" id="2_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://v4xaps0ncash" path="res://Bubbleboy.png" id="2_fu7sn"]
 
 [sub_resource type="Gradient" id="Gradient_fu7sn"]
 offsets = PackedFloat32Array(0, 0.9, 1)
