@@ -2,7 +2,8 @@ extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var platform = $"../Platform/NavigationRegion3D"
-@export var SPEED = 3.0
+@export var SPEED = 2.0
+
 var xform: Transform3D
 
 func _physics_process(delta: float) -> void:

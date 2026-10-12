@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bgsubeog1wmdf"]
 
 [ext_resource type="Script" uid="uid://f4lh2imulxy4" path="res://Scripts/BubbleBoy.gd" id="1_kwxc0"]
-[ext_resource type="Texture2D" uid="uid://dpq7n1fdfs1qy" path="res://icon.svg" id="2_wpm7o"]
+[ext_resource type="Texture2D" uid="uid://bp61arskh5irp" path="res://icon.svg" id="2_wpm7o"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vjepk"]
 
@@ -11,9 +11,24 @@ radius = 0.591987
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwxc0"]
 albedo_color = Color(0.7058824, 1, 1, 1)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_8f4em"]
+viewport_path = NodePath("Visuals/Sprite3D/SubViewport")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wpm7o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpm7o"]
+bg_color = Color(0.6815338, 0, 0.12837818, 1)
+border_color = Color(0.36762846, 1.02277845e-07, 0.076594554, 1)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbbvi"]
+bg_color = Color(0, 0.8156863, 0.19607843, 1)
+border_color = Color(0.5372549, 0, 0.12941177, 1)
+
 [node name="BubbleBoy" type="RigidBody3D" unique_id=1935134588]
 mass = 1000.0
 script = ExtResource("1_kwxc0")
+damage = 34.0
 Tex2 = ExtResource("2_wpm7o")
 
 [node name="BubbleCollider" type="CollisionShape3D" parent="." unique_id=313043950]
@@ -29,5 +44,33 @@ debug_color = Color(0.9884394, 0, 0.3071676, 0.41960785)
 
 [node name="SimpleMesh" type="CSGSphere3D" parent="Visuals" unique_id=1453635169]
 material = SubResource("StandardMaterial3D_kwxc0")
+
+[node name="Sprite3D" type="Sprite3D" parent="Visuals" unique_id=511727099]
+billboard = 1
+texture = SubResource("ViewportTexture_8f4em")
+
+[node name="SubViewport" type="SubViewport" parent="Visuals/Sprite3D" unique_id=484166815]
+transparent_bg = true
+size = Vector2i(215, 212)
+
+[node name="Panel" type="Panel" parent="Visuals/Sprite3D/SubViewport" unique_id=1416729889]
+offset_right = 216.0
+offset_bottom = 31.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wpm7o")
+
+[node name="ProgressBar" type="ProgressBar" parent="Visuals/Sprite3D/SubViewport/Panel" unique_id=864892071]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -14.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_wpm7o")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gbbvi")
+value = 13.26
+show_percentage = false
 
 [connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]

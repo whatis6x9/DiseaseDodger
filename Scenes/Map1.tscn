@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bod5b0x33r64j" path="res://Scenes/tree_2.tscn" id="5_uifhc"]
 [ext_resource type="Script" uid="uid://0vjq7jggll6n" path="res://Scripts/tree_spawner.gd" id="6_es4yc"]
 [ext_resource type="PackedScene" uid="uid://c0dsk0v1iwfuf" path="res://Scenes/tree_1.tscn" id="7_hrdr6"]
+[ext_resource type="FontFile" uid="uid://doyq35f87olnp" path="res://Assets/Models/Minecraft - by BennyFonts1002 - from fontstruct.ttf" id="9_j2fs2"]
+[ext_resource type="Script" uid="uid://rnykaj1nbevd" path="res://timer_ui.gd" id="10_kpjo8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f6pk4"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -30,7 +32,7 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 size = Vector3(1.2069092, 0.0126953125, 1.1018066)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f6pk4"]
-size = Vector3(3.7736816, 0.022460938, 4.888672)
+size = Vector3(5.286133, 0.022460938, 4.9763184)
 
 [node name="World" type="Node3D" unique_id=1056795468]
 script = ExtResource("1_vjepk")
@@ -47,7 +49,7 @@ navigation_mesh = SubResource("NavigationMesh_32aui")
 script = ExtResource("6_es4yc")
 obstacles = Array[PackedScene]([ExtResource("7_hrdr6"), ExtResource("5_uifhc")])
 nextWaveTime = 0.1
-obstaclesPerWave = 7
+obstaclesPerWave = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/Tree Spawner" unique_id=1526100210]
 transform = Transform3D(9.725, 0, 0, 0, 9.725, 0, 0, 0, 9.725, -0.09081575, 0.21100104, -0.041549683)
@@ -66,22 +68,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8459258, 1.6740263, 3.83591
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1577556181]
 transform = Transform3D(0.5833286, 0.52562714, -0.6192284, 0, 0.76237476, 0.6471358, 0.81223625, -0.37749282, 0.444715, -2.2845683, 1.5311909, 3.5557919)
 
-[node name="Enemy" parent="." unique_id=2036500499 instance=ExtResource("3_4ov7l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9982607, 0.049999714, -1.4162288)
-SPEED = 3.0
-
 [node name="Enemy Spawner" type="Node3D" parent="." unique_id=128096228]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8923063, 0)
+transform = Transform3D(1.82, 0, 0, 0, 1.82, 0, 0, 0, 1.82, 0, 1.1885965, 0)
 script = ExtResource("5_f6pk4")
 enemies = Array[PackedScene]([ExtResource("3_4ov7l")])
 enemiesPerWave = 1
 maxWaves = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy Spawner" unique_id=828868260]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3468547, 0)
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, 0, 0.04453417, 0)
 shape = SubResource("BoxShape3D_f6pk4")
 
 [node name="Timer" type="Timer" parent="Enemy Spawner" unique_id=955789196]
 
+[node name="GameTimeout" type="Timer" parent="." unique_id=2068833127]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1983390063]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1914361219]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -97.0
+offset_top = 25.0
+offset_right = 97.0
+offset_bottom = 57.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("9_j2fs2")
+theme_override_font_sizes/font_size = 32
+text = "66266526"
+script = ExtResource("10_kpjo8")
+
 [connection signal="timeout" from="Platform/Tree Spawner/Timer" to="Platform/Tree Spawner" method="_on_timer_timeout"]
+[connection signal="no_hp_left" from="BubbleBoy" to="." method="_on_bubble_boy_no_hp_left"]
 [connection signal="timeout" from="Enemy Spawner/Timer" to="Enemy Spawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="GameTimeout" to="." method="_on_game_timeout_timeout"]
