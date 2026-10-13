@@ -33,6 +33,7 @@ script = ExtResource("1_7vrkn")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(1.05, 1.05)
 texture = ExtResource("2_fu7sn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1188659212]

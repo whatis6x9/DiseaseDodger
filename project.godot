@@ -23,6 +23,11 @@ buses/default_bus_layout="uid://cc3vd5ls6s4mf"
 MenuMusic="*uid://b8whapjdynmcj"
 ButtonClick="*uid://ddtspgf5ptvqb"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
 [dotnet]
 
 project/assembly_name="Diesease Dodger"
@@ -61,3 +66,4 @@ forward={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
