@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ddtspgf5ptvqb"]
+
+[ext_resource type="AudioStream" uid="uid://v8f2cm32blh4" path="res://Assets/Sounds/707042__vilkas_sound__vs-button-click-05.mp3" id="1_itr3e"]
+
+[node name="ButtonClick" type="AudioStreamPlayer" unique_id=544028592]
+stream = ExtResource("1_itr3e")
+bus = &"sfx"

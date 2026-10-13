@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b8whapjdynmcj"]
+
+[ext_resource type="AudioStream" uid="uid://dpkpkn3rb2agb" path="res://Assets/Music/Unity.mp3" id="1_audmt"]
+
+[node name="MenuMusic" type="AudioStreamPlayer" unique_id=411554617]
+stream = ExtResource("1_audmt")
+autoplay = true
+bus = &"music"

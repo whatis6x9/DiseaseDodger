@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c4fhvbk8ew2qq" path="res://game_over.gd" id="1_ccer4"]
 [ext_resource type="Texture2D" uid="uid://b1xlg1tolqfx8" path="res://Assets/Models/big_tree_01_0.png" id="1_y26ei"]
-[ext_resource type="FontFile" uid="uid://doyq35f87olnp" path="res://Assets/Models/Minecraft - by BennyFonts1002 - from fontstruct.ttf" id="1_yxx3c"]
+[ext_resource type="AudioStream" uid="uid://ddwthrs4d32xq" path="res://Assets/Music/Gypsy Shoegazer No Voices.mp3" id="2_8u835"]
+[ext_resource type="FontFile" uid="uid://bu1app3xms1jr" path="res://static/Fredoka_Expanded-Bold.ttf" id="3_8u835"]
 
 [node name="GameOver" type="Control" unique_id=1249513056]
 layout_mode = 3
@@ -14,6 +15,11 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ccer4")
+
+[node name="game_over_music" type="AudioStreamPlayer" parent="." unique_id=900373294]
+stream = ExtResource("2_8u835")
+autoplay = true
+bus = &"music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=71643505]
 
@@ -30,17 +36,35 @@ offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1339674547]
+[node name="title" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=445409057]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_yxx3c")
-theme_override_font_sizes/font_size = 64
+theme_override_colors/font_color = Color(0.9098039, 0.9843137, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.020446979, 0.120724835, 0.33048913, 1)
+theme_override_colors/font_outline_color = Color(0.105882354, 0.42352942, 0.65882355, 1)
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_8u835")
+theme_override_font_sizes/font_size = 96
 text = "Game Over"
+horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=412490589]
+[node name="title_spacer" type="Container" parent="CanvasLayer/VBoxContainer" unique_id=335882207]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_yxx3c")
+
+[node name="retry_button" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=412490589]
+layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Retry"
+
+[node name="spacer" type="Container" parent="CanvasLayer/VBoxContainer" unique_id=1850111266]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="back_button" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1158453395]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Back"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2087020410]
 position = Vector2(663, 403.99997)
@@ -51,4 +75,5 @@ texture = ExtResource("1_y26ei")
 position = Vector2(0.10498047, 14.089966)
 scale = Vector2(5.29, 5.29)
 
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/retry_button" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/back_button" to="." method="_on_back_pressed"]

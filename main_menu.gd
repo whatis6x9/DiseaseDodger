@@ -12,6 +12,8 @@ var buttons: Array[Button] = []
 
 
 func _ready() -> void:
+	if not MenuMusic.playing:
+		MenuMusic.play()
 	for child in $VBoxContainer.get_children():
 		if child is Button:
 			_style_button(child)
@@ -100,19 +102,27 @@ func _style_button(button: Button) -> void:
 
 
 func _on_start_pressed() -> void:
+	ButtonClick.play()
 	_spawn_slime($VBoxContainer/Start)
 	await get_tree().create_timer(0.3).timeout
 	get_tree().change_scene_to_file("res://Scenes/Map1.tscn")
 
 func _on_quit_pressed() -> void:
+	ButtonClick.play()
 	_spawn_slime($VBoxContainer/Quit)
 	get_tree().quit()
 
 
 func _on_options_pressed() -> void:
+	ButtonClick.play()
 	_spawn_slime($VBoxContainer/Options)
 	get_tree().change_scene_to_file("res://Scenes/options.tscn")
-	print("Options pressed")
+
+
+func _on_credits_pressed() -> void:
+	ButtonClick.play()
+	_spawn_slime($VBoxContainer/Credits)
+	get_tree().change_scene_to_file("res://Scenes/credits.tscn")
 
 
 func _spawn_slime(button: Button) -> void:

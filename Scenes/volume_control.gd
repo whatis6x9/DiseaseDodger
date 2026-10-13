@@ -16,3 +16,7 @@ func _ready() -> void:
 # Updates the volume when the slider is moved
 func _on_volume_changed(volume: float) -> void:
 	AudioServer.set_bus_volume_db(bus_index, linear_to_db(volume))
+
+
+func _on_drag_started() -> void:
+	ButtonClick.play()

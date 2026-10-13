@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://be8jeegclni8y" path="res://main_menu.gd" id="1_7vrkn"]
 [ext_resource type="FontFile" uid="uid://bu1app3xms1jr" path="res://static/Fredoka_Expanded-Bold.ttf" id="2_7vrkn"]
 [ext_resource type="Texture2D" uid="uid://v4xaps0ncash" path="res://Bubbleboy.png" id="2_fu7sn"]
+[ext_resource type="AudioStream" uid="uid://dpkpkn3rb2agb" path="res://Assets/Music/Unity.mp3" id="4_43uje"]
 
 [sub_resource type="Gradient" id="Gradient_fu7sn"]
 offsets = PackedFloat32Array(0, 0.9, 1)
@@ -94,6 +95,11 @@ initial_velocity_min = 250.0
 initial_velocity_max = 600.0
 scale_amount_min = 0.2
 scale_amount_max = 0.8
+
+[node name="menu_music" type="AudioStreamPlayer" parent="." unique_id=1475965392]
+stream = ExtResource("4_43uje")
+autoplay = true
+bus = &"music"
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]

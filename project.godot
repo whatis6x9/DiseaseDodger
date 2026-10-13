@@ -12,7 +12,16 @@ config_version=5
 
 config/name="Diesease Dodger"
 run/main_scene="uid://b8bonerm6tefs"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
+
+[audio]
+
+buses/default_bus_layout="uid://cc3vd5ls6s4mf"
+
+[autoload]
+
+MenuMusic="*uid://b8whapjdynmcj"
+ButtonClick="*uid://ddtspgf5ptvqb"
 
 [dotnet]
 

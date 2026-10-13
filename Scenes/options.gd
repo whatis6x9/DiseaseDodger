@@ -141,4 +141,5 @@ func _style_label(label: Label) -> void:
 
 
 func _on_back_pressed() -> void:
+	ButtonClick.play()
 	get_tree().change_scene_to_file("res://main_menu.tscn")

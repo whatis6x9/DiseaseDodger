@@ -6,3 +6,5 @@
 max_value = 1.0
 step = 0.001
 script = ExtResource("1_5cyts")
+
+[connection signal="drag_started" from="." to="." method="_on_drag_started"]

@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://cfgx6n8es1nmu"]
+
+[ext_resource type="Script" uid="uid://bmjqxlrlrwmj4" path="res://Scenes/credits.gd" id="1_ccovl"]
+[ext_resource type="Texture2D" uid="uid://v4xaps0ncash" path="res://Bubbleboy.png" id="2_xelri"]
+[ext_resource type="FontFile" uid="uid://bu1app3xms1jr" path="res://static/Fredoka_Expanded-Bold.ttf" id="3_uah1q"]
+
+[sub_resource type="Gradient" id="Gradient_fu7sn"]
+offsets = PackedFloat32Array(0, 0.9, 1)
+colors = PackedColorArray(0.7490196, 0.9137255, 1, 0.14901961, 1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qyyw6"]
+gradient = SubResource("Gradient_fu7sn")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Credits" type="Control" unique_id=715563123]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ccovl")
+
+[node name="background" type="TextureRect" parent="." unique_id=828037001]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_xelri")
+
+[node name="credits_box" type="VBoxContainer" parent="." unique_id=1042100545]
+layout_mode = 0
+offset_left = 277.0
+offset_top = 50.0
+offset_right = 877.0
+offset_bottom = 474.0
+
+[node name="credits_title" type="Label" parent="credits_box" unique_id=49460919]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9098039, 0.9843137, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.020446979, 0.120724835, 0.33048913, 1)
+theme_override_colors/font_outline_color = Color(0.105882354, 0.42352942, 0.65882355, 1)
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_uah1q")
+theme_override_font_sizes/font_size = 96
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="spacer" type="Container" parent="credits_box" unique_id=919015325]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="credits_box" unique_id=743894818]
+layout_mode = 2
+
+[node name="credits" type="Label" parent="credits_box/PanelContainer" unique_id=199039933]
+layout_mode = 2
+text = "Created by:
+Dinesh, William, and Joshua
+
+Music and Sounds:
+\"Gypsy Shoegazer No Voices\", \"Hot Pursuit\", \"Unity\"
+Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0
+http://creativecommons.org/licenses/by/4.0/
+
+VS Button Click 05.mp3 by Vilkas_Sound --
+https://freesound.org/s/707042/ --
+License: Attribution 4.0
+"
+
+[node name="back" type="Button" parent="credits_box" unique_id=737460429]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back
+"
+
+[node name="BubbleIntro" type="CPUParticles2D" parent="." unique_id=129012082]
+position = Vector2(576, -60)
+amount = 200
+texture = SubResource("GradientTexture2D_qyyw6")
+lifetime = 3.0
+explosiveness = 0.7
+emission_shape = 3
+emission_rect_extents = Vector2(600, 10)
+direction = Vector2(0, 1)
+spread = 8.0
+initial_velocity_min = 250.0
+initial_velocity_max = 600.0
+scale_amount_min = 0.2
+scale_amount_max = 0.8
+
+[connection signal="pressed" from="credits_box/back" to="." method="_on_back_pressed"]

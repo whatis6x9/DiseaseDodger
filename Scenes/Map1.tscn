@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://w64x5ohyx5tx" path="res://Scripts/map_1.gd" id="1_vjepk"]
 [ext_resource type="PackedScene" uid="uid://jebul18m1tyq" path="res://Scenes/Platform.tscn" id="2_vjepk"]
+[ext_resource type="AudioStream" uid="uid://bg2q71nlloj6j" path="res://Assets/Music/Hot Pursuit.mp3" id="2_ynalf"]
 [ext_resource type="PackedScene" uid="uid://bgsubeog1wmdf" path="res://Scenes/BubbleBoy.tscn" id="3_2t7xj"]
 [ext_resource type="PackedScene" uid="uid://c12wqgr78fa1b" path="res://Scenes/enemy.tscn" id="3_4ov7l"]
 [ext_resource type="Script" uid="uid://bm37phjqjfkwb" path="res://Scripts/enemy_spawner.gd" id="5_f6pk4"]
@@ -36,6 +37,11 @@ size = Vector3(5.286133, 0.022460938, 4.9763184)
 
 [node name="World" type="Node3D" unique_id=1056795468]
 script = ExtResource("1_vjepk")
+
+[node name="game_music" type="AudioStreamPlayer" parent="." unique_id=173734298]
+stream = ExtResource("2_ynalf")
+autoplay = true
+bus = &"music"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1910466025]
 environment = SubResource("Environment_hrdr6")
